@@ -28,7 +28,7 @@ function getMap(target, layers) {
         target: target,
         view: new ol.View({
             zoom: 0,
-            maxZoom: 14,
+            maxZoom: 15,
             center: [0, 0]
         }),
     });
@@ -45,7 +45,7 @@ function getSOILayer() {
     return new ol.layer.Tile({
         background: 'grey',
         source: src,
-        maxZoom: 14,
+        maxZoom: 15,
     });
 }
 
@@ -250,7 +250,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function showPopup(map, e, pop, contentFn) {
         var features = map.getFeaturesAtPixel(e.pixel);
-        features = features.filter((f) => f.get('id'));  // Changed from 'EVEREST_SH' to 'id'
+        features = features.filter((f) => f.get('id'));
         const feature = features.length ? features[0] : undefined;
         if (feature === undefined) {
             pop.hide();
