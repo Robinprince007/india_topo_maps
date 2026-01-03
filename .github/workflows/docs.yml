@@ -25,7 +25,6 @@ jobs:
           osm_50k_dir='docs/50k/osm/'
           mkdir -p $osm_50k_dir
           gh release download soi-ancillary -p index_50k.geojson -O ${osm_50k_dir}/osm_index.geojson
-          gh release download soi-ancillary -p polymap15m_area.geojson -O ${osm_50k_dir}/india_boundary.geojson
           gh release download 50k-osm-orig -p listing_files.csv -O ${osm_50k_dir}/pdf_listing.csv
           gh release download 50k-osm-georef -p listing_files.csv -O ${osm_50k_dir}/tiff_listing.csv
           gh release download 50k-osm-jpg -p listing_files.csv -O ${osm_50k_dir}/jpg_listing.csv
@@ -34,7 +33,6 @@ jobs:
           nhp_25k_dir='docs/25k/nhp/'
           mkdir -p $nhp_25k_dir
           gh release download soi-ancillary -p index_25k.geojson -O ${nhp_25k_dir}/nhp_index.geojson
-          gh release download soi-ancillary -p polymap15m_area.geojson -O ${nhp_25k_dir}/india_boundary.geojson
           gh release download 25k-nhp-orig -p listing_files.csv -O ${nhp_25k_dir}/pdf_listing.csv
           gh release download 25k-nhp-georef -p listing_files.csv -O ${nhp_25k_dir}/tiff_listing.csv
 

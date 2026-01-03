@@ -61,33 +61,6 @@ function getGridSource() {
     return src;
 }
 
-function getIndiaOutlineSource(map1, map2, container, statusFn) {
-    const url = '/india_topo_maps/50k/osm/india_boundary.geojson';
-    const src = new ol.source.Vector({
-        format: new ol.format.GeoJSON(),
-        url: url,
-        overlaps: false,
-        attributions: [
-            makeLink("https://surveyofindia.gov.in/pages/outline-maps-of-india", "SOI India Outline")
-        ]
-    });
-
-    const srcLabel = 'India Outline';
- 
-    src.on('featuresloadstart', (e) => {
-        statusFn(`Loading ${srcLabel} features..`, false);
-    });
-    src.on('featuresloadend', (e) => {
-        statusFn(``, false);
-        updateMap(map1, container, src.getExtent());
-        updateMap(map2, container, src.getExtent());
-    });
-    src.on('featuresloaderror', (e) => {
-        statusFn(`Failed to load ${srcLabel}`, true);
-    });
-    return src;
-}
-
 
 function getLayer(src, style, visible) {
     const layer = new ol.layer.Vector({
@@ -223,18 +196,6 @@ document.addEventListener("DOMContentLoaded", () => {
     map2.addLayer(layerGroup);
 
     var compareElem = document.getElementById('compare');
-    var indiaOutlineSrc = getIndiaOutlineSource(map1, map2, compareElem, setStatus);
-    var addOutlineLayer = (map) => {
-        map.addLayer(new ol.layer.Vector({
-            title: 'SOI India Outline',
-            visible: true,
-            source: indiaOutlineSrc,
-            style: boundaryStyle,
-            displayInLayerSwitcher: false
-        }));
-    };
-    addOutlineLayer(map1);
-    addOutlineLayer(map2);
 
     const gridSrc = getGridSource();
     var getGridLayer = () => {
