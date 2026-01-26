@@ -128,7 +128,7 @@ function getLayerGroup() {
         title: 'ESRI Satellite',
     });
     const otmLayer = new IndiaBoundaryCorrectedTileLayer({
-        url: 'https://{a-c}.tile.opentopomap.org/{z}/{x}/{y}.png',
+        url: 'https://tile.opentopomap.org/{z}/{x}/{y}.png',
         layerConfig: 'open-topo',
         sourceOptions: {
             attributions: [
